@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>LISBON 2026 · Spalio 20–24 · Master Planas</title>
+<style>
+  :root{
+    --bg:#faf8f5; --card:#ffffff; --ink:#1f2933; --muted:#6b7280;
+    --accent:#0e7490; --accent2:#b45309; --line:#e5e7eb;
+    --ok:#166534; --okbg:#dcfce7; --plan:#92400e; --planbg:#fef3c7;
+    --free:#065f46; --freebg:#d1fae5; --miss:#991b1b; --missbg:#fee2e2;
+    --warn:#9a3412; --warnbg:#ffedd5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  header{background:linear-gradient(135deg,#0e7490,#155e75);color:#fff;padding:28px 16px 20px;text-align:center}
+  header h1{margin:0;font-size:1.7rem;letter-spacing:.5px}
+  header p{margin:6px 0 0;opacity:.9;font-size:.95rem}
+  nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:8px 10px;-webkit-overflow-scrolling:touch}
+  nav a{white-space:nowrap;text-decoration:none;color:var(--accent);font-size:.88rem;font-weight:600;padding:6px 10px;border-radius:999px}
+  nav a:hover{background:#ecfeff}
+  main{max-width:860px;margin:0 auto;padding:16px}
+  section{margin:26px 0}
+  h2{font-size:1.25rem;border-bottom:2px solid var(--accent);padding-bottom:6px;margin-bottom:14px}
+  h3{font-size:1.05rem;margin:18px 0 8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .badge{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 9px;border-radius:999px;vertical-align:middle}
+  .b-ok{background:var(--okbg);color:var(--ok)} .b-plan{background:var(--planbg);color:var(--plan)}
+  .b-free{background:var(--freebg);color:var(--free)} .b-miss{background:var(--missbg);color:var(--miss)}
+  .b-warn{background:var(--warnbg);color:var(--warn)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#f1f5f9}
+  a{color:var(--accent)}
+  .muted{color:var(--muted);font-size:.88rem}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+  details summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:1rem;background:#f8fafc}
+  details[open] summary{border-bottom:1px solid var(--line)}
+  details .inner{padding:6px 16px 16px}
+  ol.steps{padding-left:20px} ol.steps li{margin:9px 0}
+  .wx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px}
+  .wx-day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px;text-align:center;font-size:.82rem}
+  .wx-day.trip{border:2px solid var(--accent2);background:#fffbeb}
+  .wx-emoji{font-size:1.6rem} .wx-temp{font-weight:700}
+  .pill-list a{display:inline-block;margin:3px 4px 3px 0;background:#ecfeff;border:1px solid #a5f3fc;border-radius:999px;padding:4px 11px;font-size:.85rem;text-decoration:none}
+  .deadline{background:var(--warnbg);border:1px solid #fdba74;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.92rem}
+  footer{text-align:center;padding:24px;color:var(--muted);font-size:.8rem}
+  @media(max-width:600px){ th,td{font-size:.82rem;padding:5px 6px} }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇵🇹 LISBON 2026</h1>
+  <p>2026-10-20 → 2026-10-24 · Audrius · Donata · Matt · Silvija</p>
+  <p class="muted" style="opacity:.75">Atnaujinta: 2026-08-21 · v1</p>
+</header>
+
+<nav>
+  <a href="#overview">Apžvalga</a><a href="#weather">Orai</a><a href="#calendar">Kalendorius</a>
+  <a href="#days">Dienų gidas</a><a href="#map">Žemėlapis</a><a href="#bookings">Rezervacijos</a><a href="#missing">Trūksta info</a>
+</nav>
+
+<main>
+
+<!-- ============ A. MASTER OVERVIEW ============ -->
+<section id="overview">
+  <h2>A · Master Overview</h2>
+  <div class="card">
+    <p><b>📅 Datos:</b> antradienis 2026-10-20 → šeštadienis 2026-10-24 (4 naktys)</p>
+    <p><b>👥 Keliautojai:</b> 4 suaugusieji — Audrius, Donata, Matt, Silvija</p>
+    <p><b>🏠 HOME BASE <span class="badge b-ok">🔒 BOOKED</span></b><br>
+      WHome Artsy Apartment in the heart of Chiado<br>
+      Travessa do Poço da Cidade 2, Misericórdia, 1200-334 Lisbon<br>
+      <a href="https://www.booking.com/Share-k5QQ5P" target="_blank">Booking.com rezervacija</a> ·
+      <a href="https://maps.google.com/?q=Travessa+do+Po%C3%A7o+da+Cidade+2,+1200-334+Lisboa" target="_blank">Google Maps</a><br>
+      <span class="muted">Vieta faktiškai Bairro Alto / Chiado riba — A Tasca do Chico (fado) yra už kampo, Rua do Alecrim restoranai 4–8 min pėsčiomis.</span></p>
+    <p><b>✈️ Skrydžiai:</b> <span class="badge b-miss">🔴 TBD</span> — atvykimas 10-20 ir išvykimas 10-24 laikai nežinomi. Gavus skrydžius planas bus perskaičiuotas.</p>
+    <p><b>🔒 Patvirtinta veikla:</b> Sunset Boat Party Cruise (DJ + open bar), trečiadienis 10-21, 17:45–19:45, £119.64 (rezervavo Matt) — <a href="https://gyg.me/ljNBqld7" target="_blank">GetYourGuide</a></p>
+  </div>
+  <div class="deadline">⚠️ <b>DEADLINE 2026-10-18:</b> automatinis £119.64 nurašymas už boat party, jei nesumokėta anksčiau (Matt kortelė).</div>
+  <div class="deadline">💶 <b>Boarding tax:</b> €1.30 žmogui (€5.20 keturiems) — mokamas vietoje per check-in. Turėkite grynų.</div>
+  <div class="card">
+    <p><b>🟡 Laukia rezervacijos (žr. <a href="#bookings">E skyrių</a>):</b> Pena Palace slotas · Quinta da Regaleira · Jerónimos + Torre de Belém slotai · Peixola (trečiadienio vakarienė) · Fado (penktadienis) · Lisboa Card 24h</p>
+    <p><b>🔴 Neatsakyti klausimai:</b> skrydžių laikai; Instagram Reel vietos tapatybė (nepatvirtinta — nespėliojame); ar spalio 20–21 bus UCL rungtynės Lisabonoje (burtai dar neįvykę).</p>
+  </div>
+</section>
+
+<!-- ============ ORAI ============ -->
+<section id="weather">
+  <h2>🌤 Orai Lisabonoje (gyva prognozė)</h2>
+  <div id="wx-status" class="muted">Kraunama prognozė…</div>
+  <div id="wx-trip"></div>
+  <div id="wx-now" class="wx-grid" style="margin-top:8px"></div>
+  <div class="card" style="margin-top:12px">
+    <p><b>Klimato vidurkis spalio pabaigoje:</b> dieną ~20–21 °C, naktį ~13–14 °C; per spalį ~11 lietingų dienų (trumpi, bet gali būti smarkūs lietūs). Jūra ~18 °C.</p>
+    <p><b>🎒 Ką pasiimti:</b> sluoksniuota apranga, lengva striukė, kompaktiškas skėtis / lietaus striukė, patogūs batai grindiniui (kalvos + akmenys!).</p>
+    <p><b>🌅 Saulėlydžiai:</b> 10-20 → 18:51 · <b>10-21 → 18:50 (per patį kruizą!)</b> · 10-22 → 18:49 · 10-23 → 18:47 · 10-24 → 18:46. Saulė teka ~07:50.</p>
+    <p class="muted">Laikrodžiai Portugalijoje sukami tik spalio 25 d. naktį — visa kelionė dar vasaros laiku (UTC+1, kaip Lietuvoje −2 val.).</p>
+  </div>
+</section>
+
+<!-- ============ B. CALENDAR ============ -->
+<section id="calendar">
+  <h2>B · Kalendorius / Timeline</h2>
+  <p class="muted">🔒 CONFIRMED · 🟡 PLAN / NEEDS BOOKING · 🟢 FREE / FLEXIBLE · 🔴 MISSING INFO · ⚠️ DEADLINE</p>
+
+  <h3>Antradienis 10-20 · ATVYKIMAS + CHIADO</h3>
+  <table>
+    <tr><th style="width:110px">Laikas</th><th>Veikla</th><th style="width:90px">Statusas</th></tr>
+    <tr><td>TBD</td><td>Skrydis → Lisabonos oro uostas</td><td>🔴</td></tr>
+    <tr><td>+45 min</td><td>Uber XL / taksi → Chiado (~€15–25, išlaipina Rua da Misericórdia)</td><td>🟡</td></tr>
+    <tr><td>Po įsikūrimo</td><td>Pasivaikščiojimas: Camões a. → Chiado → Baixa → Praça do Comércio</td><td>🟢</td></tr>
+    <tr><td>Vakaras</td><td>Vakarienė + Bairro Alto (diena laikoma lanksčia)</td><td>🟢</td></tr>
+  </table>
+
+  <h3>Trečiadienis 10-21 · SENOJI LISABONA + 🔒 BOAT PARTY</h3>
+  <table>
+    <tr><th style="width:110px">Laikas</th><th>Veikla</th><th style="width:90px">Statusas</th></tr>
+    <tr><td>09:30–13:30</td><td>Alfama → Miradouro de Santa Luzia → Castelo de São Jorge (€17, be sloto)</td><td>🟡</td></tr>
+    <tr><td>13:30–15:00</td><td>Pietūs Alfamoje / Baixoje</td><td>🟢</td></tr>
+    <tr><td>15:00–16:30</td><td>Poilsis apartamentuose</td><td>🟢</td></tr>
+    <tr><td><b>16:45</b></td><td>Išeiti iš apartamentų (15–18 min žemyn iki terminalo)</td><td>🔒</td></tr>
+    <tr><td><b>17:05</b></td><td>Check-in: Estação Fluvial Sul e Sueste, VIDUJE, „Pacific Cruises“ 1 langelis (ne pontonas!). €1.30/asm. tax</td><td>🔒</td></tr>
+    <tr><td><b>17:45–19:45</b></td><td>🛥 SUNSET BOAT PARTY (saulėlydis 18:50 — laive!)</td><td>🔒</td></tr>
+    <tr><td>20:15–20:30</td><td>Vakarienė: <b>Peixola</b> (rekomendacija) — pakeliui namo</td><td>🟡</td></tr>
+  </table>
+
+  <h3>Ketvirtadienis 10-22 · SINTRA</h3>
+  <table>
+    <tr><th style="width:110px">Laikas</th><th>Veikla</th><th style="width:90px">Statusas</th></tr>
+    <tr><td>07:20</td><td>Išeiti į Rossio stotį (10–12 min pėsčiomis)</td><td>🟡</td></tr>
+    <tr><td><b>07:41</b></td><td>Traukinys Rossio → Sintra (40 min, ~€2.45, Navegante kortelė)</td><td>🟡</td></tr>
+    <tr><td>08:50</td><td>Pirmas 434 autobusas → Pena parko įėjimas (eilėje būti ~08:35)</td><td>🟡</td></tr>
+    <tr><td>09:15–09:50</td><td>Parko vartai → rūmai (30 min į kalną arba parko shuttle)</td><td>🟡</td></tr>
+    <tr><td><b>10:00</b></td><td>⚠️ Pena Palace slotas — NULINĖ tolerancija vėlavimui (€20 Essential)</td><td>🟡⚠️</td></tr>
+    <tr><td>12:30–15:00</td><td>434 žemyn → Sintra centras + pietūs</td><td>🟢</td></tr>
+    <tr><td>~15:00</td><td>Quinta da Regaleira slotas (€20, 1 val. tolerancija; paskutinis slotas 16:30)</td><td>🟡</td></tr>
+    <tr><td>17:30–18:30</td><td>Traukinys atgal (kas ~20 min)</td><td>🟢</td></tr>
+    <tr><td>Vakaras</td><td>Laisvas vakaras Lisabonoje</td><td>🟢</td></tr>
+  </table>
+
+  <h3>Penktadienis 10-23 · BELÉM + FADO</h3>
+  <table>
+    <tr><th style="width:110px">Laikas</th><th>Veikla</th><th style="width:90px">Statusas</th></tr>
+    <tr><td>08:05</td><td>Pėsčiomis žemyn į Cais do Sodré (8–10 min) — aktyvuoti Lisboa Card 24h</td><td>🟡</td></tr>
+    <tr><td>08:20</td><td>CP traukinys Cais do Sodré → Belém (7 min; NE tramvajus 15E — kišenvagiai)</td><td>🟡</td></tr>
+    <tr><td>08:30</td><td>Pastéis de Belém (eiti į VIDŲ prie staliukų — eilė gatvėje tik takeaway)</td><td>🟢</td></tr>
+    <tr><td><b>09:30</b></td><td>Mosteiro dos Jerónimos atidarymo slotas (€18 / Lisboa Card)</td><td>🟡</td></tr>
+    <tr><td>11:15</td><td>Padrão dos Descobrimentos + stogo terasa (€10 / Lisboa Card)</td><td>🟢</td></tr>
+    <tr><td>~12:15</td><td>Torre de Belém — slotas viduje (€15, 900/d. limitas) ARBA tik iš išorės</td><td>🟡</td></tr>
+    <tr><td>13:00</td><td>MAAT stogo takas (nemokamas) → traukinys atgal + pietūs</td><td>🟢</td></tr>
+    <tr><td>14:30–19:00</td><td>LAISVA: Chiado kavinės, suvenyrai, miradouros, poilsis</td><td>🟢</td></tr>
+    <tr><td>~20:00</td><td>🎶 FADO vakaras (3 variantai — žr. dienų gidą; favoritas O Faia arba A Baiuca)</td><td>🟡</td></tr>
+    <tr><td>Vėlai</td><td>Nakties fado už kampo — A Tasca do Chico (iki 03:00)</td><td>🟢</td></tr>
+  </table>
+
+  <h3>Šeštadienis 10-24 · IŠVYKIMAS</h3>
+  <table>
+    <tr><th style="width:110px">Laikas</th><th>Veikla</th><th style="width:90px">Statusas</th></tr>
+    <tr><td>Rytas</td><td>Pusryčiai / brunch, paskutinis pasivaikščiojimas, suvenyrai</td><td>🟢</td></tr>
+    <tr><td>TBD</td><td>Uber XL / taksi → oro uostas (rezervas 2.5–3 val. iki skrydžio)</td><td>🔴</td></tr>
+    <tr><td>TBD</td><td>Skrydis namo</td><td>🔴</td></tr>
+  </table>
+</section>
+
+<!-- ============ C. DAILY GUIDE ============ -->
+<section id="days">
+  <h2>C · Dienų gidas</h2>
+
+  <details>
+    <summary>🛬 Antradienis 10-20 — Atvykimas + Chiado</summary>
+    <div class="inner">
+      <ol class="steps">
+        <li><b>Oro uostas → Chiado.</b> Geriausia 4 žmonėms su lagaminais: <b>Uber/Bolt XL</b> (~€15–25) arba taksi (~€15–20 + €1.60 už bagažą), 15–25 min. Aerobus nebeegzistuoja. Metro pigiau (~€8 visiems), bet su persėdimu ir giliais eskalatoriais — nepatogu su bagažu. Automobiliai į siauriausias gatveles neįvažiuoja — išlaipins ant <a href="https://maps.google.com/?q=Rua+da+Miseric%C3%B3rdia,+Lisboa" target="_blank">Rua da Misericórdia</a>.</li>
+        <li><b>Įsikūrimas</b> WHome apartamentuose. Check-in laiką patikslinti su šeimininku, kai žinosime skrydį.</li>
+        <li><b>Pažintinis ratas pėsčiomis (~2–3 val., viskas žemyn):</b>
+          <a href="https://maps.google.com/?q=Pra%C3%A7a+Lu%C3%ADs+de+Cam%C3%B5es,+Lisboa" target="_blank">Praça Luís de Camões</a> (2 min) →
+          <a href="https://maps.google.com/?q=Rua+Garrett,+Lisboa" target="_blank">Rua Garrett / Chiado</a> →
+          Baixa / <a href="https://maps.google.com/?q=Rua+Augusta,+Lisboa" target="_blank">Rua Augusta</a> →
+          <a href="https://maps.google.com/?q=Pra%C3%A7a+do+Com%C3%A9rcio,+Lisboa" target="_blank">Praça do Comércio</a> ir upės krantinė.</li>
+        <li><b>Vakarienė</b> Bairro Alto / Chiado — spontaniškai (diena lanksti, priklauso nuo atvykimo laiko). Greitas variantas: <a href="https://maps.google.com/?q=Time+Out+Market,+Lisboa" target="_blank">Time Out Market</a> Cais do Sodré (visiems po skirtingą patiekalą).</li>
+        <li>Grįžtant — vakarinis vaizdas nuo <a href="https://maps.google.com/?q=Miradouro+de+S%C3%A3o+Pedro+de+Alc%C3%A2ntara,+Lisboa" target="_blank">Miradouro de São Pedro de Alcântara</a> (5 min nuo namų).</li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>🏰 Trečiadienis 10-21 — Alfama + Castelo + 🔒 Boat Party</summary>
+    <div class="inner">
+      <ol class="steps">
+        <li><b>09:30</b> — išeiti. Pėsčiomis per Baixą į <a href="https://maps.google.com/?q=Alfama,+Lisboa" target="_blank">Alfamą</a> (~20 min) arba tuk-tuk į viršų. Tramvajaus 28 vengti pikui — eilės + kišenvagiai.</li>
+        <li><a href="https://maps.google.com/?q=Miradouro+de+Santa+Luzia,+Lisboa" target="_blank">Miradouro de Santa Luzia</a> → siauros Alfamos gatvelės.</li>
+        <li><b>~11:00</b> — <a href="https://maps.google.com/?q=Castelo+de+S%C3%A3o+Jorge,+Lisboa" target="_blank">Castelo de São Jorge</a>: €17, spalį 09:00–21:00, išankstinio sloto NEREIKIA (bilietai vietoje arba <a href="https://castelodesaojorge.pt/en/" target="_blank">castelodesaojorge.pt</a>). Skirti ~1.5–2 val. — vaizdai į visą miestą.</li>
+        <li><b>13:30</b> — pietūs Alfamoje ar Baixoje, <b>15:00–16:30 poilsis namuose</b> (vakaras ilgas).</li>
+        <li><b>16:45</b> — išeiti. Maršrutas žemyn: Rua Garrett → Rua Augusta → pro arką į Praça do Comércio → PR kampas. <a href="https://www.google.com/maps/dir/?api=1&origin=Travessa+do+Po%C3%A7o+da+Cidade+2,+Lisboa&destination=Esta%C3%A7%C3%A3o+Fluvial+Sul+e+Sueste,+Lisboa&travelmode=walking" target="_blank">Maršrutas Google Maps</a> (~1.2 km, 15–18 min žemyn).</li>
+        <li><b>17:05</b> — <a href="https://maps.google.com/?q=Esta%C3%A7%C3%A3o+Fluvial+Sul+e+Sueste,+Lisboa" target="_blank">Estação Fluvial Sul e Sueste</a> (baltas pastatas su laikrodžiu). ⚠️ Check-in — pastato <b>VIDUJE, „Pacific Cruises“ 1 kasos langelis</b>, NE prie pontono, nuo kurio išplaukia laivas. €1.30/asm. tax vietoje.</li>
+        <li><b>17:45–19:45</b> — 🔒 <a href="https://gyg.me/ljNBqld7" target="_blank">Sunset Boat Party</a>. DJ, alus, vynas, sangrija, open bar. Saulėlydis 18:50 — pats vidurys kruizo. Ant vandens vėsu — striukė!</li>
+        <li><b>~20:15</b> — vakarienė. <b>Rekomendacija: Peixola</b> (Rua do Alecrim 35) — 4.7★ Google, moderni jūros gėrybių virtuvė, €25–50/asm., dirba iki 23:00, tiesiai ant kelio namo (14–16 min nuo prieplaukos, namo likus 7 min). Rezervuoti per <a href="https://www.thefork.com/restaurant/peixola-r299691" target="_blank">TheFork</a>. Atsarginiai: Palácio Chiado (įspūdingas 18 a. rūmų interjeras, bet maistas nevienodas, brangu) · Marisqueira Uma (arroz de marisco, arčiausiai prieplaukos) · O Velho Eurico (geriausias kainos/kokybės santykis mieste, bet stalą reikia gaudyti prieš kelias savaites per IG @ovelhoeurico).</li>
+      </ol>
+      <p class="muted">Po 19:45 jokių muziejų ir rimto sightseeing — tik vakarienė ir Bairro Alto.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🚂 Ketvirtadienis 10-22 — Sintra (Pena + Regaleira)</summary>
+    <div class="inner">
+      <p><b>Verdiktas: ketvirtadienis — viena GERIAUSIŲ dienų Sintrai.</b> Savaitgaliai perpildyti, pirmadienis netikėtai irgi (Lisabonos muziejai uždaryti — visi važiuoja į Sintrą), an–kt ramiausia. Nei Pena, nei Regaleira ketvirtadieniais nesiuždaro.</p>
+      <ol class="steps">
+        <li><b>07:20</b> — išeiti į <a href="https://maps.google.com/?q=Rossio+Station,+Lisboa" target="_blank">Rossio stotį</a> (10–12 min). Navegante korteles (€0.50/vnt + bilietai, reikia 4 atskirų) geriausia įsigyti iš vakaro.</li>
+        <li><b>07:41</b> — traukinys į Sintrą (40 min, ~€2.45). ⚠️ 08:11 traukinys NETINKA — nespėja į pirmą autobusą ir 10:00 slotas žlunga. Nulinio streso variantas: 07:11.</li>
+        <li><b>08:21</b> atvykus — tiesiai į <b>434 autobuso</b> eilę (pirmas ~08:50, hop-on bilietas ~€11–13.50, <a href="https://www.sintra434.com/" target="_blank">sintra434.com</a>). Jei eilė per ilga — tuk-tuk arba Uber (~€10–15).</li>
+        <li><b>09:15</b> — pro Pena parko vartus. Nuo vartų iki rūmų <b>30 min į kalną</b> (oficialu) arba vidinis shuttle (~€4.50).</li>
+        <li><b>10:00</b> — ⚠️ <a href="https://maps.google.com/?q=Park+and+National+Palace+of+Pena,+Sintra" target="_blank">Pena Palace</a> slotas. <b>NULINĖ tolerancija:</b> pavėlavus bilietas prarandamas, anksčiau neįleidžia. Bilietas „Essential Visit“ €20/asm. tik per <a href="https://bilheteira.parquesdesintra.pt/home/en" target="_blank">bilheteira.parquesdesintra.pt</a>. Spalį populiarūs rytiniai slotai išparduodami prieš kelias dienas — pirkti prieš 2–3 sav. Saugesnė alternatyva: imti 10:30.</li>
+        <li><b>12:30</b> — 434 žemyn į <a href="https://maps.google.com/?q=Sintra+historic+centre" target="_blank">Sintra centrą</a> → pietūs (~1.5 val.).</li>
+        <li><b>~15:00</b> — <a href="https://maps.google.com/?q=Quinta+da+Regaleira,+Sintra" target="_blank">Quinta da Regaleira</a> (10–12 min pėsčiomis nuo centro): €20/asm., slotas kas 30 min su 1 val. tolerancija, paskutinis 16:30, sodai iki 18:30. Bilietai: <a href="https://regaleira.byblueticket.pt/en/event/12766/quinta-da-regaleira-non-guided-visit" target="_blank">regaleira.byblueticket.pt</a>. Iniciacijos šulinys!</li>
+        <li><b>17:30–18:00</b> — pėsčiomis atgal į stotį (~15 min) → traukinys kas ~20 min → Rossio.</li>
+        <li><b>Vakaras laisvas.</b> Sintros dienos NEPERKRAUNAME — Pena + centras + Regaleira yra kokybiškas maksimumas.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>🗼 Penktadienis 10-23 — Belém + laisva popietė + Fado</summary>
+    <div class="inner">
+      <p><b>💳 Lisboa Card 24h (€31/asm., <a href="https://shop.visitlisboa.com/products/lisboa-card" target="_blank">shop.visitlisboa.com</a>) apsimoka būtent šiai dienai:</b> Jerónimos €18 + Torre €15 + Padrão €10 + transportas ~€3 = €46 → sutaupo ~€15/asm. Sintros rūmų NEdengia, tad 72h versija neapsimoka. Aktyvuoti penktadienio rytą.</p>
+      <ol class="steps">
+        <li><b>08:05</b> — žemyn į <a href="https://maps.google.com/?q=Cais+do+Sodr%C3%A9,+Lisboa" target="_blank">Cais do Sodré</a> (8–10 min per Rua do Alecrim).</li>
+        <li><b>08:20</b> — CP traukinys → Belém (7 min, ~€1.55; dalis Cascais greitųjų Belém praleidžia — žiūrėti švieslentę). ⚠️ 15E tramvajaus vengti: 25–35 min ir pati kišenvagių pamėgčiausia linija mieste.</li>
+        <li><b>08:30</b> — <a href="https://maps.google.com/?q=Past%C3%A9is+de+Bel%C3%A9m,+Lisboa" target="_blank">Pastéis de Belém</a> (Rua de Belém 84): gatvės eilė — tik takeaway; <b>eiti vidun prie staliukų</b> (1000+ vietų, laukimas &lt;10 min). Šilti pastéis + kava.</li>
+        <li><b>09:30</b> — <a href="https://maps.google.com/?q=Mosteiro+dos+Jer%C3%B3nimos,+Lisboa" target="_blank">Mosteiro dos Jerónimos</a> atidarymo slotas (€18 arba Lisboa Card; bilietai su laiku per <a href="https://mmp.bymeoblueticket.pt/" target="_blank">mmp.bymeoblueticket.pt</a>). Vienuolynas + klosteris ~1.5 val. Bažnyčia nemokama.</li>
+        <li><b>11:15</b> — pro Praça do Império prie upės: <a href="https://maps.google.com/?q=Padr%C3%A3o+dos+Descobrimentos,+Lisboa" target="_blank">Padrão dos Descobrimentos</a> (€10 / su Lisboa Card nemokamai) — liftu į 56 m terasą, geriausia Belém panorama.</li>
+        <li><b>~12:15</b> — pasivaikščiojimas krantine iki <a href="https://maps.google.com/?q=Torre+de+Bel%C3%A9m,+Lisboa" target="_blank">Torre de Belém</a>. Po restauracijos atidarytas 2026-05-27; viduje nauji slotai (60 žm./30 min, 900/d., €15). Vidus kuklus — jei slotų nebus, apžiūra iš išorės yra visiškai gerbtinas planas.</li>
+        <li><b>13:00</b> — grįžtant <a href="https://maps.google.com/?q=MAAT,+Lisboa" target="_blank">MAAT</a> stogo takas (nemokamas, 10 min) → traukinys atgal → pietūs prie Cais do Sodré / Chiado.</li>
+        <li><b>14:30–19:30 — LAISVA</b> (sąmoningai ≥3 val.): kavinės, suvenyrai, Manteigaria natos palyginimui, miradouros, poilsis.</li>
+        <li><b>~20:00 — FADO.</b> Trys patikrinti variantai:<br>
+          <b>1) O Faia</b> (Rua da Barroca 54, <b>3 min nuo namų</b>) — klasikiniai fado namai nuo 1947 m. su vakariene ir pirmo ryškumo atlikėjais, ~€65–90/asm., šventinis variantas. Rezervuoti būtina: <a href="https://www.ofaia.com/" target="_blank">ofaia.com</a>, +351 213 426 742.<br>
+          <b>2) A Baiuca</b> (Rua de São Miguel 20, Alfama, ~10 min taksi) — fado vadio tarp staliukų, namų virtuvė, ~€25–35/asm. min., oficialiame Fado muziejaus maršrute. Rezervuoti telefonu: +351 218 867 284.<br>
+          <b>3) A Tasca do Chico</b> (Rua do Diário de Notícias 39, <b>2 min — už kampo!</b>) — fado vadio smuklė nuo 1994 m., be įėjimo mokesčio, tik gėrimai + petiscos (~€10–20). Muzika nuo 21:00 iki 03:00. 4 žmonėms rezervuotis: WhatsApp +351 961 339 696.<br>
+          <b>Rekomenduojama kombinacija:</b> vakarienė su fado O Faia ARBA A Baiuca → naktinis užsukimas į Tasca do Chico pakeliui namo.<br>
+          <span class="muted">Vengti: Café Luso (autobusų grupės, išpūstos kainos) ir „Fado in Chiado“ (teatrinis šou turistams).</span></li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>🛫 Šeštadienis 10-24 — Išvykimas</summary>
+    <div class="inner">
+      <ol class="steps">
+        <li>Skrydžio laikas <b>TBD</b> — kol nežinome, rytas neapkraunamas.</li>
+        <li>Pusryčiai / brunch Chiado, paskutinis pasivaikščiojimas, suvenyrai (pvz., konservų krautuvėlės, Vista Alegre, A Vida Portuguesa Rua Anchieta).</li>
+        <li>Check-out laiką suderinti su šeimininku; bagažo saugojimas — paklausti.</li>
+        <li>Uber XL / taksi į oro uostą (15–25 min be kamščių; šeštadienį ramiau). Oro uoste būti 2.5 val. iki skrydžio.</li>
+        <li class="muted">Pastaba: tą naktį (10-24→25) sukamas laikrodis — aktualu tik jei skrydis nusikeltų į sekmadienį. MEO Arena 10-24 vakare galimas Jungle koncertas (netrukdo, nebent norėtumėt eiti — VERIFY).</li>
+      </ol>
+    </div>
+  </details>
+</section>
+
+<!-- ============ D. MAP ============ -->
+<section id="map">
+  <h2>D · Žemėlapis — visos vietos</h2>
+  <div class="card pill-list">
+    <p><b>🏠 Apgyvendinimas</b><br>
+      <a href="https://maps.google.com/?q=Travessa+do+Po%C3%A7o+da+Cidade+2,+1200-334+Lisboa" target="_blank">WHome Chiado</a></p>
+    <p><b>🔒 Patvirtinta veikla</b><br>
+      <a href="https://maps.google.com/?q=Esta%C3%A7%C3%A3o+Fluvial+Sul+e+Sueste,+Lisboa" target="_blank">Boat check-in (terminalas)</a></p>
+    <p><b>Diena 1 · Chiado/Baixa</b><br>
+      <a href="https://maps.google.com/?q=Pra%C3%A7a+Lu%C3%ADs+de+Cam%C3%B5es,+Lisboa" target="_blank">Praça Camões</a>
+      <a href="https://maps.google.com/?q=Rua+Garrett,+Lisboa" target="_blank">Rua Garrett</a>
+      <a href="https://maps.google.com/?q=Pra%C3%A7a+do+Com%C3%A9rcio,+Lisboa" target="_blank">Praça do Comércio</a>
+      <a href="https://maps.google.com/?q=Miradouro+de+S%C3%A3o+Pedro+de+Alc%C3%A2ntara,+Lisboa" target="_blank">Miradouro S. Pedro</a></p>
+    <p><b>Diena 2 · Alfama</b><br>
+      <a href="https://maps.google.com/?q=Miradouro+de+Santa+Luzia,+Lisboa" target="_blank">Miradouro Santa Luzia</a>
+      <a href="https://maps.google.com/?q=Castelo+de+S%C3%A3o+Jorge,+Lisboa" target="_blank">Castelo S. Jorge</a>
+      <a href="https://maps.google.com/?q=Alfama,+Lisboa" target="_blank">Alfama</a></p>
+    <p><b>Diena 3 · Sintra</b><br>
+      <a href="https://maps.google.com/?q=Rossio+Station,+Lisboa" target="_blank">Rossio stotis</a>
+      <a href="https://maps.google.com/?q=Sintra+station" target="_blank">Sintra stotis</a>
+      <a href="https://maps.google.com/?q=Park+and+National+Palace+of+Pena,+Sintra" target="_blank">Pena</a>
+      <a href="https://maps.google.com/?q=Quinta+da+Regaleira,+Sintra" target="_blank">Regaleira</a>
+      <a href="https://maps.google.com/?q=Sintra+historic+centre" target="_blank">Sintra centras</a></p>
+    <p><b>Diena 4 · Belém</b><br>
+      <a href="https://maps.google.com/?q=Cais+do+Sodr%C3%A9,+Lisboa" target="_blank">Cais do Sodré</a>
+      <a href="https://maps.google.com/?q=Past%C3%A9is+de+Bel%C3%A9m,+Lisboa" target="_blank">Pastéis de Belém</a>
+      <a href="https://maps.google.com/?q=Mosteiro+dos+Jer%C3%B3nimos,+Lisboa" target="_blank">Jerónimos</a>
+      <a href="https://maps.google.com/?q=Padr%C3%A3o+dos+Descobrimentos,+Lisboa" target="_blank">Padrão</a>
+      <a href="https://maps.google.com/?q=Torre+de+Bel%C3%A9m,+Lisboa" target="_blank">Torre de Belém</a>
+      <a href="https://maps.google.com/?q=MAAT,+Lisboa" target="_blank">MAAT</a></p>
+    <p><b>🍽 Restoranai</b><br>
+      <a href="https://maps.google.com/?q=Peixola,+Rua+do+Alecrim+35,+Lisboa" target="_blank">Peixola</a>
+      <a href="https://maps.google.com/?q=Bairrices,+Travessa+do+Carvalho+27,+Lisboa" target="_blank">Bairrices</a>
+      <a href="https://maps.google.com/?q=Pal%C3%A1cio+Chiado,+Rua+do+Alecrim+70,+Lisboa" target="_blank">Palácio Chiado</a>
+      <a href="https://maps.google.com/?q=O+Velho+Eurico,+Lisboa" target="_blank">O Velho Eurico</a>
+      <a href="https://maps.google.com/?q=Marisqueira+Uma,+Rua+dos+Sapateiros+177,+Lisboa" target="_blank">Marisqueira Uma</a>
+      <a href="https://maps.google.com/?q=Time+Out+Market,+Lisboa" target="_blank">Time Out Market</a></p>
+    <p><b>🎶 Fado</b><br>
+      <a href="https://maps.google.com/?q=A+Tasca+do+Chico,+Rua+do+Di%C3%A1rio+de+Not%C3%ADcias+39,+Lisboa" target="_blank">A Tasca do Chico</a>
+      <a href="https://maps.google.com/?q=O+Faia,+Rua+da+Barroca+54,+Lisboa" target="_blank">O Faia</a>
+      <a href="https://maps.google.com/?q=A+Baiuca,+Rua+de+S%C3%A3o+Miguel+20,+Lisboa" target="_blank">A Baiuca</a>
+      <a href="https://maps.google.com/?q=Parreirinha+de+Alfama,+Lisboa" target="_blank">Parreirinha (atsarginis)</a></p>
+    <p><b>➕ Optional</b><br>
+      <a href="https://maps.google.com/?q=Manteigaria,+Chiado,+Lisboa" target="_blank">Manteigaria (natos Chiado)</a>
+      <a href="https://maps.google.com/?q=LX+Factory,+Lisboa" target="_blank">LX Factory</a>
+      <a href="https://maps.google.com/?q=Miradouro+da+Senhora+do+Monte,+Lisboa" target="_blank">Miradouro Senhora do Monte</a></p>
+  </div>
+</section>
+
+<!-- ============ E. BOOKINGS ============ -->
+<section id="bookings">
+  <h2>E · Rezervacijos</h2>
+  <div class="card">
+    <h3>✅ ALREADY BOOKED</h3>
+    <ul>
+      <li>🔒 WHome Artsy Apartment, Chiado (Booking.com)</li>
+      <li>🔒 Sunset Boat Party 10-21 17:45, 4 asm., £119.64 (Matt; ⚠️ auto-mokėjimas 10-18)</li>
+    </ul>
+    <h3>🟠 BOOK NOW (jau dabar / iki spalio pradžios)</h3>
+    <ul>
+      <li><b>O Faia fado vakarienė</b> pentadieniui 10-23 (stalai skirstomi rezervacijų tvarka — kuo anksčiau, tuo geresnis stalas): <a href="https://www.ofaia.com/" target="_blank">ofaia.com</a></li>
+      <li><b>O Velho Eurico</b> (jei norim jo trečiadienį) — per IG @ovelhoeurico, stalai išgraibstomi prieš kelias savaites</li>
+    </ul>
+    <h3>🟡 BOOK LATER (likus 2–3 sav., ~spalio 1–8)</h3>
+    <ul>
+      <li><b>Pena Palace</b> 10-22 10:00 arba 10:30 slotas, Essential €20×4 — <a href="https://bilheteira.parquesdesintra.pt/home/en" target="_blank">bilheteira.parquesdesintra.pt</a></li>
+      <li><b>Quinta da Regaleira</b> 10-22 ~15:00 slotas, €20×4 — <a href="https://regaleira.byblueticket.pt/en/event/12766/quinta-da-regaleira-non-guided-visit" target="_blank">byblueticket</a></li>
+      <li><b>Lisboa Card 24h</b> €31×4 (online ~5 % pigiau) — <a href="https://shop.visitlisboa.com/products/lisboa-card" target="_blank">shop.visitlisboa.com</a></li>
+      <li><b>Jerónimos 09:30 + Torre de Belém ~12:15 slotai</b> 10-23 (su Lisboa Card vis tiek reikia slotų!) — <a href="https://mmp.bymeoblueticket.pt/" target="_blank">mmp.bymeoblueticket.pt</a></li>
+      <li><b>Peixola</b> 10-21 20:30, 4 asm. — <a href="https://www.thefork.com/restaurant/peixola-r299691" target="_blank">TheFork</a></li>
+      <li><b>A Baiuca / Tasca do Chico</b> (jei renkamės) — telefonu likus ~1–2 sav.</li>
+    </ul>
+    <h3>🟢 NO BOOKING NEEDED</h3>
+    <ul>
+      <li>Castelo de São Jorge (bilietai vietoje) · Padrão dos Descobrimentos · Pastéis de Belém · MAAT stogas · traukiniai (Navegante kortelė vietoje) · 434 autobusas</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ F. MISSING ============ -->
+<section id="missing">
+  <h2>F · Trūkstama informacija</h2>
+  <div class="card">
+    <ul>
+      <li>🔴 <b>Skrydžių laikai</b> (10-20 atvykimas, 10-24 išvykimas) — gavus, perskaičiuojamos 1 ir 5 dienos + transferai.</li>
+      <li>🔴 <b>Instagram Reel vieta</b> („40 min train ride from Lisbon“) — tapatybė nepatvirtinta, nespėliojame. Gavus įrodymą — įvertinsim, ar dera į planą.</li>
+      <li>🟡 Check-in / check-out laikai WHome apartamentuose.</li>
+      <li>🟡 UCL burtai: ar 10-20/21 bus Benfica/Sporting namų rungtynės (eismas apie stadionus) — VERIFY rugsėjį.</li>
+      <li>🟡 VERIFY CLOSER TO TRIP (spalio pradžioje): visų muziejų spalio valandos · Pena/Regaleira kainos · 434 pirmojo reiso laikas · traukinių grafikai · restoranų darbo laikas 10-21 · fado seansų laikai · orų prognozė · tram 28 / Carris pranešimai.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>📝 Changelog</h3>
+    <ul>
+      <li><b>2026-08-21 · v1</b> — sukurtas master planas: patikrinta visa bazinė informacija (5 web tyrimai), patvirtintas ketvirtadienis Sintrai, parinkta Peixola trečiadienio vakarienei, atrinkti 3 fado variantai, sudarytas rezervacijų sąrašas, įjungta gyva orų prognozė.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>LISBON 2026 · Audrius / Donata / Matt / Silvija · planas atnaujinamas per Claude · šaltiniai patikrinti 2026-08-21</footer>
+
+<script>
+(function(){
+  const TRIP_START = new Date('2026-10-20'), TRIP_END = new Date('2026-10-24');
+  const WMO = {
+    0:['☀️','Giedra'],1:['🌤','Beveik giedra'],2:['⛅','Debesuota su pragiedruliais'],3:['☁️','Debesuota'],
+    45:['🌫','Rūkas'],48:['🌫','Rūkas'],51:['🌦','Dulksna'],53:['🌦','Dulksna'],55:['🌧','Dulksna'],
+    61:['🌦','Nedidelis lietus'],63:['🌧','Lietus'],65:['🌧','Smarkus lietus'],66:['🌧','Lietus'],67:['🌧','Lietus'],
+    71:['🌨','Sniegas'],73:['🌨','Sniegas'],75:['🌨','Sniegas'],77:['🌨','Sniegas'],
+    80:['🌦','Trumpas lietus'],81:['🌧','Liūtys'],82:['⛈','Smarkios liūtys'],85:['🌨','Sniegas'],86:['🌨','Sniegas'],
+    95:['⛈','Perkūnija'],96:['⛈','Perkūnija su kruša'],99:['⛈','Perkūnija su kruša']
+  };
+  const DAYS = ['Sk','Pr','An','Tr','Kt','Pn','Št'];
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=38.7169&longitude=-9.1395&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FLisbon&forecast_days=16';
+  fetch(url).then(r=>r.json()).then(d=>{
+    const st = document.getElementById('wx-status');
+    const nowBox = document.getElementById('wx-now');
+    const tripBox = document.getElementById('wx-trip');
+    const dates = d.daily.time;
+    let tripHtml = '', nowHtml = '', tripDaysInRange = 0;
+    dates.forEach((iso,i)=>{
+      const dt = new Date(iso);
+      const isTrip = dt >= TRIP_START && dt <= TRIP_END;
+      const w = WMO[d.daily.weather_code[i]] || ['·',''];
+      const card = '<div class="wx-day'+(isTrip?' trip':'')+'"><div>'+DAYS[dt.getDay()]+' '+String(dt.getDate()).padStart(2,'0')+'.'+String(dt.getMonth()+1).padStart(2,'0')+'</div>'+
+        '<div class="wx-emoji">'+w[0]+'</div><div class="wx-temp">'+Math.round(d.daily.temperature_2m_max[i])+'° / '+Math.round(d.daily.temperature_2m_min[i])+'°</div>'+
+        '<div class="muted">☔ '+(d.daily.precipitation_probability_max[i]??'–')+'%</div><div class="muted" style="font-size:.72rem">'+w[1]+'</div></div>';
+      if(isTrip){ tripHtml += card; tripDaysInRange++; } else if(i<7){ nowHtml += card; }
+    });
+    if(tripDaysInRange>0){
+      tripBox.innerHTML = '<h3>🧳 Kelionės dienų prognozė</h3><div class="wx-grid">'+tripHtml+'</div>';
+      st.textContent = 'Gyva Open-Meteo prognozė (atsinaujina atidarius puslapį).';
+      if(tripDaysInRange===5) nowBox.style.display='none'; else nowBox.innerHTML = nowHtml;
+    } else {
+      const daysLeft = Math.ceil((TRIP_START - new Date())/86400000);
+      st.innerHTML = 'Iki kelionės liko <b>'+daysLeft+' d.</b> Tiksli 10-20–24 prognozė čia atsiras automatiškai ~spalio 4–8 d. (16 d. horizontas). Žemiau — Lisabona dabar:';
+      nowBox.innerHTML = nowHtml;
+    }
+  }).catch(()=>{ document.getElementById('wx-status').textContent='Prognozės nepavyko užkrauti — patikrink interneto ryšį.'; });
+})();
+</script>
+</body>
+</html>
